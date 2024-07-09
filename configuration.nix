@@ -7,14 +7,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      <home-manager/nixos> 
     ];
 
-  nixpkgs.config = {
-    packageOverrides = pkgs: with pkgs; {
-    };
-  };
-  
   # Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -101,7 +95,7 @@
   # TODO: Put inside hardware-configuration.nix
   hardware.opengl = {
     enable = true;
-    driSupport = true;
+    #driSupport = true;
     driSupport32Bit = true;
   };
 
@@ -149,7 +143,7 @@
   };
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  #nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

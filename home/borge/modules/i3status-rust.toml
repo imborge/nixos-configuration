@@ -1,0 +1,45 @@
+#theme = "gruvbox-dark"
+#icons = "awesome"
+
+[[block]]
+block = "disk_space"
+path = "/"
+info_type = "available"
+alert_unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+format = " $icon root: $available.eng(w:2) "
+
+[[block]]
+block = "memory"
+format = " $icon $mem_total_used_percents.eng(w:2) "
+format_alt = " $icon_swap $swap_used_percents.eng(w:2) "
+
+[[block]]
+block = "cpu"
+format = " $icon $barchart $utilization "
+interval = 1
+
+[[block]]
+block = "load"
+interval = 1
+format = "{1m}"
+
+[[block]]
+block = "net"
+device = "wlp3s0"
+interval = 5
+format = " $icon ^icon_net_down$speed_down.eng(prefix:K) ^icon_net_up$speed_up.eng(prefix:K) $ssid "
+
+[[block]]
+block = "sound"
+# on_click = "pulsemixer --toggle-mute"
+
+[[block]]
+block = "time"
+interval = 5
+format = "$timestamp.datetime(f:'%Y-%m-%d %R %a')"
+
+[[block]]
+block = "battery"
