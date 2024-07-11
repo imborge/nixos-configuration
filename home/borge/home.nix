@@ -200,14 +200,14 @@
     enable = true;
   };
 
-  # services.gpg-agent = {
-  #   enable = true;
-  #   pinentryPackage = "gtk2";
-  #   extraConfig = ''
-  #     allow-emacs-pinentry
-  #     allow-loopback-pinentry
-  #   '';
-  # };
+  services.gpg-agent = {
+    enable = true;
+    pinentryPackage = pkgs.pinentry-gtk2;
+    extraConfig = ''
+      allow-emacs-pinentry
+      allow-loopback-pinentry
+    '';
+  };
 
   programs.kitty = {
     enable = true;

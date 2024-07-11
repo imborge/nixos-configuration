@@ -60,15 +60,9 @@
       manage = "window";
       start = ''
         xhost +SI:localuser:$USER
-        # emacs --daemon -f exwm-enable
-        exec emacs --with-exwm
+        exec emacs --debug-init --with-exwm
       '';
     };
-     # let fakeSession = { manage = "window";
-     #                     name = "fake";
-     #                     start = "";
-     #                   };
-     # in [ fakeSession ];
 
     # keyboard switches:
     # win+space = toggle layout (us/no);;; ;
@@ -96,7 +90,7 @@
   hardware.opengl = {
     enable = true;
     #driSupport = true;
-    driSupport32Bit = true;
+    #driSupport32Bit = true;
   };
 
   # TODO: Put inside hardware-configuration.nix
@@ -141,9 +135,6 @@
     extraGroups = [ "networkmanager" "wheel" "audio" ];
     packages = with pkgs; [];
   };
-
-  # Allow unfree packages
-  #nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -289,11 +280,6 @@
   #   enableSSHSupport = true;
   # };
   
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
   # Automatic garbage collection
   nix.gc = {
     automatic = true;
@@ -304,12 +290,6 @@
   nix.settings = {
     trusted-users = [ "root" "borge" ];
   };
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
