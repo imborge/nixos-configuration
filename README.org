@@ -6,7 +6,7 @@ This is my NixOS configuration, featuring home-manager and EXWM.
 
 * Setup
 
-#+begin_bash
+#+begin_src bash
 git clone https://github.com/imborge/nixos-configuration.git ~/nixos-configuration
 
 # Backup old config
