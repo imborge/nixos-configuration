@@ -1,7 +1,8 @@
-{ ... }: {
+{
   imports = [
-    ./modules/i3.nix
-    ./modules/emacs.nix
+    ./i3
+    ./programs
+    ./shell
     ./home.nix
   ];
 }

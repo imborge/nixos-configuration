@@ -32,7 +32,7 @@
         inherit pkgs;
         system = "x86_64-linux";
         modules = [
-          ./configuration.nix
+          ./hosts/borgix
 
           home-manager.nixosModules.home-manager
           {
@@ -43,7 +43,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.borge = import ./home/borge;
-	          home-manager.extraSpecialArgs = { inherit inputs outputs; };
+	          home-manager.extraSpecialArgs = inputs;
           }
         ];
       };

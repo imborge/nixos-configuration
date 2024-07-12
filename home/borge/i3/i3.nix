@@ -1,4 +1,8 @@
 { pkgs, lib, ... }: {
+  home.packages = with pkgs; [
+    kitty
+  ];
+
   xsession.windowManager.i3 = {
     enable = true;
     config = rec {

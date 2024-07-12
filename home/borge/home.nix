@@ -17,83 +17,53 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # system ops
-    pkgs.htop
-    pkgs.btop
-    pkgs.tree
-    pkgs.ripgrep
-    pkgs.fd
-    pkgs.procps
+    htop
+    btop
+    tree
+    ripgrep
+    fd
+    procps
+    killall
 
-    pkgs.pinentry-curses
-    pkgs.keychain
+    pinentry-curses
+    keychain
 
     # email
-    pkgs.protonmail-bridge
-    pkgs.mu
-    pkgs.isync
-    pkgs.meson
+    protonmail-bridge
+    mu
+    isync
+    meson
+
+    libnotify
+    dunst
 
     # Development
-    pkgs.emacs-all-the-icons-fonts
-    pkgs.emacs-lsp-booster
-    pkgs.gnumake
-    pkgs.eask # for developing emacs packages
-    pkgs.entr
-    # inputs.devenv.packages."${pkgs.system}".devenv
-    pkgs.cachix
-    pkgs.scc
-
-    # pkgs.python3
-    # JS/TS world
-    pkgs.corepack # for pnpm
-    pkgs.nodePackages.prettier
-
-    # golang
-    pkgs.go_1_22    # go lang
-    pkgs.gopls # go language server
-    pkgs.gotools
-    pkgs.godef # find symbol information in Go source
-    #pkgs.air # live reload for Go apps
-
-    # lua
-    pkgs.lua-language-server
-
-    # rust
-    pkgs.rustup
+    gnumake
+    eask # for developing emacs packages
+    entr
+    # inputs.devenv.packages."${system}".devenv
+    cachix
+    scc
 
     # Utilities
-    pkgs.flameshot # screenshots
-    pkgs.git-sync
-    pkgs.graphviz
-    pkgs.playerctl
-    pkgs.sound-theme-freedesktop
-    pkgs.imagemagick
-    pkgs.mediainfo
-    pkgs.elinks
-    pkgs.ffmpeg-full
-    pkgs.vimb
-
-    # postgres linter
-    # pkgs.squawk
-    # pkgs.libpg_query # squawk dependency
+    flameshot # screenshots
+    graphviz
+    sound-theme-freedesktop
+    # Draw UML diagrams using a simple and human readable text description
+    plantuml
+    unzip
 
     # Communication
-    pkgs.discord
+    discord
 
-    # dev libs
-    pkgs.glib
-    pkgs.pango
-    pkgs.gdk-pixbuf
-    pkgs.atkmm
-    pkgs.gobject-introspection
-    pkgs.libepoxy
-    pkgs.gtk4
-    pkgs.pkg-config
+    # To be offered a list of "Installed applications" when opening a file.
+    lxmenu-data
+    # To recognise different file types.
+    shared-mime-info
   ];
 
-  services.playerctld.enable = true;
 
   services.blueman-applet = {
     enable = true;
@@ -104,6 +74,7 @@
   #   enable = true;
   #   startWithUserSession = "graphical";
   # };
+
 
   services.ssh-agent = {
     enable = true;
@@ -151,24 +122,6 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-    # ".profile".text = ''
-    #   # GENERATED FILE - Do not edit this manually.
-    #   setxkbmap -option caps:escape
-    # '';
-    # ".zprofile".text = ''
-    #   # GENERATED FILE - Do not edit this manually.
-    #   setxkbmap -option caps:escape
-    # '';
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
   };
 
   # Home Manager can also manage your environment variables through
@@ -184,19 +137,19 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
-    GOPATH = "$HOME/go";
+    # GOPATH = "$HOME/go";
   };
-  home.sessionPath = [ "$HOME/go/bin" ];
+  # home.sessionPath = [ "$HOME/go/bin" ];
 
-  nixpkgs.config.allowUnfree = true;
-  
+  # nixpkgs.config.allowUnfree = true;
+
   # https://github.com/nix-community/home-manager/issues/2942
-  nixpkgs.config.allowUnfreePredicate = (_: true);
+  # nixpkgs.config.allowUnfreePredicate = (_: true);
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.gpg = {
+ programs.gpg = {
     enable = true;
   };
 
@@ -246,26 +199,6 @@
     enable = true;
   };
   
-  programs.zsh = {
-    enable = true;
-    shellAliases = {
-      l = "ls -alh";
-      ll = "ls -l";
-      update = "sudo nixos-rebuild switch";
-      ec = "emacsclient --alternate-editor=\"\" --create-frame";
-      ecn = "ec -n";
-      go = "go1.22.4";
-      proj = "cd ~/Projects/";
-    };
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" "direnv" ];
-      theme = "robbyrussell";
-    };
-    initExtraFirst = ''
-      . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-    '';
-  };
 
   programs.password-store = {
     enable = true;
