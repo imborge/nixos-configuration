@@ -4,3 +4,17 @@
 
 This is my NixOS configuration, featuring home-manager and EXWM.
 
+* Setup
+
+#+begin_bash
+git clone https://github.com/imborge/nixos-configuration.git ~/nixos-configuration
+
+# Backup old config
+sudo mv /etc/nixos /etc/nixos.old
+
+# create symlink to cloned repo
+sudo ln -s ~/nixos-configuration /etc/nixos
+#+end_bash
+
+* Resources
+- [[https://nixos-and-flakes.thiscute.world/][NixOS & Flakes Book - An unofficial book for beginners]]
