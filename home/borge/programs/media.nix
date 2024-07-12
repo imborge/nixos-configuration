@@ -9,6 +9,7 @@
     librsvg
     mpv
     obs-studio
+    alsa-utils
   ];
 
   services.playerctld.enable = true;
