@@ -22,10 +22,12 @@
         "${modifier}+Shift+l" = "move up";
         "${modifier}+Shift+semicolon" = "move right";
 
-        "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%";
-        "XF86AudioLowerVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%";
-        "XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle";
-        "XF86AudioMicMute" = "exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+        "${modifier}+c" = "exec --no-startup-id emacsclient --alternate-editor='' --create-frame --no-wait --eval '(baj/org-capture-from-desktop)'";
+
+        "XF86AudioRaiseVolume" = "exec --no-startup-id amixer -M set Master 5%+";
+        "XF86AudioLowerVolume" = "exec --no-startup-id amixer -M set Master 5%-";
+        "XF86AudioMute" = "exec --no-startup-id amixer -M set Master toggle";
+        # "XF86AudioMicMute" = "exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle";
         "XF86AudioNext" = "exec --no-startup-id playerctl next";
         "XF86AudioPrev" = "exec --no-startup-id playerctl previous";
         "XF86AudioPlay" = "exec --no-startup-id playerctl play-pause";
@@ -41,6 +43,11 @@
       startup = [
         {
           command = "picom";
+          always = true;
+          notification = false;
+        }
+        {
+          command = "sh /home/borge/.screenlayout/std.sh";
           always = true;
           notification = false;
         }
@@ -74,15 +81,15 @@
         }
         {
           workspace = "6";
-          output = "eDP";
+          output = ["HDMI-A-0" "eDP"];
         }
         {
           workspace = "7";
-          output = "eDP";
+          output = ["HDMI-A-0" "eDP"];
         }
         {
           workspace = "8";
-          output = "eDP";
+          output = ["HDMI-A-0" "eDP"];
         }
         {
           workspace = "9";
