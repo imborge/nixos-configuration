@@ -46,7 +46,7 @@ in {
     LC_NUMERIC = "nb_NO.UTF-8";
     LC_PAPER = "nb_NO.UTF-8";
     LC_TELEPHONE = "nb_NO.UTF-8";
-    LC_TIME = "nb_NO.UTF-8";
+    LC_TIME = "en_US.UTF-8";
   };
 
   # Fonts
