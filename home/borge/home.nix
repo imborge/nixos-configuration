@@ -169,9 +169,9 @@
       name = "JetBrainsMono NF";
       size = 11;
     };
-    settings = {
-      shell_integration = "no-cursor";
-    };
+    extraConfig = ''
+      cursor_blink_interval 0
+    '';
   };
 
   programs.tmux = {
