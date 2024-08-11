@@ -7,7 +7,7 @@
       update = "sudo nixos-rebuild switch";
       ec = "emacsclient --alternate-editor=\"\" --create-frame";
       ecn = "ec -n";
-      go = "go1.22.4";
+      # go = "go1.22.4";
       proj = "cd ~/Projects/";
     };
     oh-my-zsh = {
@@ -15,8 +15,8 @@
       plugins = [ "git" "direnv" ];
       theme = "robbyrussell";
     };
-    initExtraFirst = ''
-      . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-    '';
+    # initExtraFirst = ''
+    #   . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+    # '';
   };
 }

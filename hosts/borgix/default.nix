@@ -10,6 +10,8 @@
       ../../modules/xserver.nix
       ../../modules/i3.nix
       ../../modules/exwm.nix
+      ../../modules/wm/qtile.nix
+      ../../modules/keycloak.nix
 
       # Include the results of the hardware scan.
       ./hardware-configuration.nix

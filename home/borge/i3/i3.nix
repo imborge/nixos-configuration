@@ -33,6 +33,8 @@
         "XF86AudioPlay" = "exec --no-startup-id playerctl play-pause";
       };
 
+      # gaps.inner = 10;
+
       bars = [
         # {
         #   position = "bottom";

@@ -47,6 +47,9 @@
     cachix
     scc
 
+    clojure
+    pandoc
+
     # Utilities
     flameshot # screenshots
     graphviz
@@ -93,15 +96,19 @@
   services.syncthing = {
     enable = true;
     extraOptions = [];
-  };
+ };
 
-  # services.dunst = {
-  #   settings = {
-  #     global = {
-  #       follow = "keyboard";
-  #     };
-  #   };
-  # };
+  services.dunst = {
+    settings = {
+      "skip-rule" = {
+        appname = "Glove80";
+        skip_delay = true;
+      };
+      global = {
+        # follow = "keyboard";
+      };
+    };
+  };
 
   services.redshift = {
     enable = true;
@@ -171,6 +178,8 @@
     };
     extraConfig = ''
       cursor_blink_interval 0
+      background_opacity 0.9
+      background #0d0e1c
     '';
   };
 
@@ -197,6 +206,7 @@
 
   programs.rofi = {
     enable = true;
+    theme = "DarkBlue";
   };
   
 

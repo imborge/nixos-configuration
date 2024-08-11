@@ -1,6 +1,7 @@
 {
   imports = [
-    ./i3
+    # ./i3
+    ./qtile
     ./programs
     ./shell
     ./home.nix
