@@ -20,6 +20,7 @@ in {
     # startWithUserSession = true;
 
     # Whether to enable generation of Emacs client desktop file.
+    package = bajEmacs;
     client.enable = true;
   };
 
@@ -40,6 +41,19 @@ in {
     pkgs.olm
     pkgs.python3Packages.python-olm
   ];
+
+  home.file.".local/share/applications/emacs-capture.desktop" = {
+    text = ''
+        [Desktop Entry]
+        Name=Org Capture
+        Exec=${bajEmacs}/bin/emacsclient %u
+        Comment=org-protocol capture
+        Icon=${bajEmacs}/share/icons/hicolor/scalable/apps/emacs.svg
+        Type=Application
+        Terminal=false
+        MimeType=x-scheme-handler/org-protocol;
+    '';
+  };
 
   services.pantalaimon.enable = true;
   services.pantalaimon.package = pkgs.pantalaimon;
