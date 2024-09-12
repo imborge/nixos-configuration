@@ -42,6 +42,7 @@ in {
     pkgs.python3Packages.python-olm
   ];
 
+  # run `nix-shell -p desktop-file-utils .local/share/applications/` to update
   home.file.".local/share/applications/emacs-capture.desktop" = {
     text = ''
         [Desktop Entry]
