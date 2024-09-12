@@ -1,45 +1,55 @@
 { pkgs, lib, ... }: {
   home.packages = with pkgs; [
-    kitty
   ];
 
   xsession.windowManager.i3 = {
     enable = true;
     config = rec {
+      # Super/Win
       modifier = "Mod4";
+
       keybindings = lib.mkOptionDefault {
-        "${modifier}+Return" = "exec kitty";
+        "${modifier}+Return" = "exec wezterm";
 
         "${modifier}+d" = "exec \"rofi -modi drun,run -show drun\"";
         
-        "${modifier}+j" = "focus left";
-        "${modifier}+k" = "focus down";
-        "${modifier}+l" = "focus up";
-        "${modifier}+semicolon" = "focus right";
-        
-        "${modifier}+Shift+j" = "move left";
-        "${modifier}+Shift+k" = "move down";
-        "${modifier}+Shift+l" = "move up";
-        "${modifier}+Shift+semicolon" = "move right";
+        "${modifier}+h" = "focus left";
+        "${modifier}+l" = "focus right";
+        "${modifier}+k" = "focus up";
+        "${modifier}+j" = "focus down";
 
+        "${modifier}+Shift+h" = "move left";
+        "${modifier}+Shift+l" = "move down";
+        "${modifier}+Shift+k" = "move up";
+        "${modifier}+Shift+j" = "move right";
+
+        "${modifier}+-"  = "split horizontal";
+        "${modifier}+\\" = "split vertical";
+
+        "${modifier}+f"       = "fullscreen toggle";
+        "${modifier}+Shift+f" = "floating toggle";
+
+        # mod+Shift+-
+        "${modifier}+_" = "layout horizontal";
+        # mod+Shift+\
+        "${modifier}+|" = "layout vertical";
+        "${modifier}+t" = "layout toggle all";
+
+        # Create quick emacs org-capture frame
         "${modifier}+c" = "exec --no-startup-id emacsclient --alternate-editor='' --create-frame --no-wait --eval '(baj/org-capture-from-desktop)'";
 
         "XF86AudioRaiseVolume" = "exec --no-startup-id amixer -M set Master 5%+";
         "XF86AudioLowerVolume" = "exec --no-startup-id amixer -M set Master 5%-";
-        "XF86AudioMute" = "exec --no-startup-id amixer -M set Master toggle";
-        # "XF86AudioMicMute" = "exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle";
-        "XF86AudioNext" = "exec --no-startup-id playerctl next";
-        "XF86AudioPrev" = "exec --no-startup-id playerctl previous";
-        "XF86AudioPlay" = "exec --no-startup-id playerctl play-pause";
+        "XF86AudioMute"        = "exec --no-startup-id amixer -M set Master toggle";
+        "XF86AudioNext"        = "exec --no-startup-id playerctl next";
+        "XF86AudioPrev"        = "exec --no-startup-id playerctl previous";
+        "XF86AudioPlay"        = "exec --no-startup-id playerctl play-pause";
       };
 
       # gaps.inner = 10;
 
+      # Using polybar
       bars = [
-        # {
-        #   position = "bottom";
-        #   statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ${./i3status-rust.toml}";
-        # }
       ];
 
       startup = [

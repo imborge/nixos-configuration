@@ -58,8 +58,11 @@
     plantuml
     unzip
 
+    gimp
+
     # Communication
     discord
+    slack
 
     # To be offered a list of "Installed applications" when opening a file.
     lxmenu-data
@@ -73,11 +76,6 @@
   };
 
   services.poweralertd.enable = true;
-  # services.emacs = {
-  #   enable = true;
-  #   startWithUserSession = "graphical";
-  # };
-
 
   services.ssh-agent = {
     enable = true;
@@ -170,7 +168,7 @@
   };
 
   programs.kitty = {
-    enable = true;
+    enable = false;
     theme = "Tokyo Night";
     font = {
       name = "JetBrainsMono NF";
@@ -180,6 +178,16 @@
       cursor_blink_interval 0
       background_opacity 0.9
       background #0d0e1c
+    '';
+  };
+
+  programs.wezterm = {
+    enable = true;
+    extraConfig = ''
+      return {
+        font = wezterm.font("JetBrainsMono NF"),
+        hide_tab_bar_if_only_one_tab = true
+      }
     '';
   };
 
@@ -208,7 +216,6 @@
     enable = true;
     theme = "DarkBlue";
   };
-  
 
   programs.password-store = {
     enable = true;

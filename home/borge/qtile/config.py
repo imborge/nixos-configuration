@@ -89,6 +89,13 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "d", lazy.spawn("rofi -show drun"), desc=""),
+    # Audio/player control
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -M set Master 5%+")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -M set Master 5%-")),
+    Key([], "XF86AudioMute", lazy.spawn("amixer -M set Master toggle")),
+    Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
+    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
+    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -181,14 +188,13 @@ widget_defaults = dict(
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
-window_name = widget.WindowName()
 
 screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.CurrentLayout(),
                 widget.GroupBox(),
+                widget.CurrentLayout(),
                 # widget.Prompt(),
                 # window_name,
                 widget.Chord(
@@ -199,9 +205,13 @@ screens = [
                 ),
                 # widget.TextBox("config", name="default"),
                 # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-
+                widget.Spacer(length=bar.STRETCH),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
+                widget.Memory(),
+                widget.DF(),
+                widget.CPU(),
+                widget.PulseVolume(fmt="Vol: {}"),
                 widget.Systray(),
                 widget.Clock(format="%Y-%m-%d %a %H:%M"),
                 # widget.QuickExit(),
