@@ -42,7 +42,9 @@ in {
     pkgs.python3Packages.python-olm
   ];
 
-  # run `nix-shell -p desktop-file-utils .local/share/applications/` to update
+  # Register org-protocol handler
+  # run `nix-shell -p desktop-file-utils --run "update-desktop-database .local/share/applications/"`
+  # to update desktop database
   home.file.".local/share/applications/emacs-capture.desktop" = {
     text = ''
         [Desktop Entry]
