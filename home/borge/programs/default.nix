@@ -2,8 +2,9 @@
 
 {
   imports = [
-    ./media.nix
     ./emacs.nix
+    ./fzf.nix;
+    ./media.nix
   ];
 
   home.packages = with pkgs; [

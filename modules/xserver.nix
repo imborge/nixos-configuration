@@ -14,6 +14,5 @@
 
   services.displayManager = {
     sddm.enable = true;
-    defaultSession = lib.mkDefault "none+exwm";
   };
 }

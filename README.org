@@ -2,7 +2,7 @@
 
 * Description
 
-This is my NixOS configuration, featuring home-manager and EXWM.
+This is my NixOS configuration including home-manager.
 
 * Setup
 
