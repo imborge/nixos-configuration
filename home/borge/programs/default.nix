@@ -3,7 +3,7 @@
 {
   imports = [
     ./emacs.nix
-    ./fzf.nix;
+    ./fzf.nix
     ./media.nix
   ];
 
