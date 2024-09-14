@@ -55,6 +55,21 @@ in {
     nerdfonts
   ];
 
+  environment.etc = {
+    "brave/policies/managed/org-protocol.json" = {
+      text = ''
+        {
+          "AutoLaunchProtocolsFromOrigins": [
+            {
+              "allowed_origins": [ "*" ],
+              "protocol": "org-protocol"
+            }
+          ]
+        }
+      '';
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     wget
     vim
@@ -63,10 +78,11 @@ in {
     # cli clipboard
     xclip
 
-    # move these to user:
     firefox
     google-chrome
     chromium
+    brave
+
     gnome.adwaita-icon-theme
     arandr
     feh

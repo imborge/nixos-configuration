@@ -10,6 +10,5 @@
     pcmanfm
     qbittorrent
     killall
-    brave
   ];
 }
