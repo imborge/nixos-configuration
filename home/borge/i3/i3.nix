@@ -19,9 +19,9 @@
         "${modifier}+j" = "focus down";
 
         "${modifier}+Shift+h" = "move left";
-        "${modifier}+Shift+l" = "move down";
+        "${modifier}+Shift+l" = "move right";
         "${modifier}+Shift+k" = "move up";
-        "${modifier}+Shift+j" = "move right";
+        "${modifier}+Shift+j" = "move down";
 
         "${modifier}+-"  = "split horizontal";
         "${modifier}+\\" = "split vertical";
