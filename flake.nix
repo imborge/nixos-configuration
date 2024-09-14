@@ -47,17 +47,5 @@
           }
         ];
       };
-
-      nixosConfigurations."plaintext-pub-1" = nixpkgs.lib.nixosSystem {
-        inherit pkgs;
-        system = "x86_64-linux";
-        modules = [
-          # ./hosts/plaintext-pub-1
-          ./hosts/plaintext-pub-1/hardware-configuration.nix
-          ./hosts/plaintext-pub-1/networking.nix
-          ./hosts/plaintext-pub-1/configuration.nix
-          ./hosts/plaintext-pub-1/nginx.nix
-        ];
-      };
     };
 }
